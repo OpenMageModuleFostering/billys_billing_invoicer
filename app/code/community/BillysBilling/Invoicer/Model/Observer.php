@@ -101,6 +101,13 @@ class BillysBilling_Invoicer_Model_Observer {
         // Order date
         $date = date("Y-m-d", $order->getCreatedAtDate()->getTimestamp());
         $dueDate = date("Y-m-d", $order->getCreatedAtDate()->getTimestamp() + $this->dueDateOffset * 86400);
+        // Find currency
+        $currency = $order->getOrderCurrency();
+        if (is_object($currency)) {
+            $currencyCode = $currency->getCurrencyCode();
+        } else {
+            $currencyCode = Mage::app()->getStore()->getCurrentCurrencyCode();
+        }
         // Set invoice data
         $invoice = array(
             "type" => "invoice",
@@ -108,7 +115,7 @@ class BillysBilling_Invoicer_Model_Observer {
             "contactMessage" => str_replace("{order_id}", $order->getIncrementId(), $this->contactMessage),
             "entryDate" => $date,
             "dueDate" => $dueDate,
-            "currencyId" => Mage::app()->getStore()->getCurrentCurrencyCode(),
+            "currencyId" => $currencyCode,
             "state" => "approved",
             "lines" => $products
         );
