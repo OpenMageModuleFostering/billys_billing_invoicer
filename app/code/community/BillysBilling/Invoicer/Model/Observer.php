@@ -122,7 +122,7 @@ class BillysBilling_Invoicer_Model_Observer {
         } catch (Billy_Exception $e) {
             BillysBilling_Invoicer_Helper_Data::printError($e, "Error occurred on invoice creation.");
         }
-        if ($response->success && !$this->disablePayments) {
+        if ($response->success && !$this->disablePayments && $order->getTotalPaid() > 0) {
             $payment = array(
                 "paidDate" => $date,
                 "accountId" => $this->bankAccountId,
