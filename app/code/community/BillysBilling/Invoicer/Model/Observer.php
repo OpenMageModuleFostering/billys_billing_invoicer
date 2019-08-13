@@ -93,14 +93,11 @@ class BillysBilling_Invoicer_Model_Observer {
             $products[] = $product;
         }
         // Add shipping costs to product array
-        if ($order->getShippingAmount() > 0) {
-            $products[] = array(
-                "productId" => $this->shippingId,
-                "quantity" => 1,
-                "unitPrice" => $order->getShippingAmount()
-            );
-        }
-
+        $products[] = array(
+            "productId" => $this->shippingId,
+            "quantity" => 1,
+            "unitPrice" => $order->getShippingAmount()
+        );
         // Order date
         $date = date("Y-m-d", $order->getCreatedAtDate()->getTimestamp());
         $dueDate = date("Y-m-d", $order->getCreatedAtDate()->getTimestamp() + $this->dueDateOffset * 86400);
