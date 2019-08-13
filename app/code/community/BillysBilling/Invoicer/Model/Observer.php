@@ -60,7 +60,7 @@ class BillysBilling_Invoicer_Model_Observer {
      */
     private function createInvoice($order) {
         // Get contact ID
-        $contactId = $this->insertIgnore("contacts", $order->getBillingAddress());
+        $contactId = $this->insertIgnore("contacts", $order->getBillingAddress(), $order);
         if ($contactId == null) {
             return false;
         }
@@ -145,12 +145,13 @@ class BillysBilling_Invoicer_Model_Observer {
      *
      * @param $type string "contacts" or "products"
      * @param $data BillingAddress object or Item object
-     *
+     * @param null $order
+     * 
      * @return int ID of inserted or found entry
      */
-    private function insertIgnore($type, $data) {
+    private function insertIgnore($type, $data, $order = null) {
         // Format data
-        $data = $this->formatArray($type, $data);
+        $data = $this->formatArray($type, $data, $order);
 
         // Check for existing contact
         $responseArray = array();
@@ -190,15 +191,21 @@ class BillysBilling_Invoicer_Model_Observer {
      *
      * @param $type string "contacts" or "products"
      * @param $data BillingAddress object or Item object
+     * @param null $order
      * @return array of either contact or product
      */
-    private function formatArray($type, $data) {
+    private function formatArray($type, $data, $order = null) {
         if ($type == "contacts") {
             // Set name depending on company or not
             if ($data->getCompany()) {
                 $name = $data->getCompany();
             } else {
                 $name = $data->getName();
+            }
+            
+            $email = $data->getEmail();
+            if (!$email) {
+                $email = $order->getCustomerEmail();
             }
 
             return array(
@@ -210,11 +217,11 @@ class BillysBilling_Invoicer_Model_Observer {
                 'state' => $data->getRegion(),
                 'phone' => $data->getTelephone(),
                 'fax' => $data->getFax(),
-                'externalId' => $data->getEmail(),
+                'externalId' => $email,
                 'persons' => array(
                     array(
                         'name' => $data->getName(),
-                        'email' => $data->getEmail(),
+                        'email' => $email,
                         'phone' => $data->getTelephone()
                     )
                 )
