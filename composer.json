@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Billys_Billing_Invoicer",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "Billy's Billing Invoicer for Magento enables you to automatically submit invoices to Billy's Billing.",
+    "authors": [
+    {
+        "name": "Billy's Billing",
+        "email": "michael@billysbilling.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

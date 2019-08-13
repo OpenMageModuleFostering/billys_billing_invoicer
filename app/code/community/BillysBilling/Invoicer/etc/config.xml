@@ -1,0 +1,53 @@
+<config>
+    <modules>
+        <BillysBilling_Invoicer>
+            <version>1.0.0</version>
+        </BillysBilling_Invoicer>
+    </modules>
+    <global>
+        <events>
+            <sales_order_invoice_register>
+                <observers>
+                    <billysbilling_save_invoice_on_success>
+                        <class>BillysBilling_Invoicer_Model_Observer</class>
+                        <method>saveInvoiceOnSuccess</method>
+                    </billysbilling_save_invoice_on_success>
+                </observers>
+            </sales_order_invoice_register>
+        </events>
+        <models>
+            <billysbilling>
+                <class>BillysBilling_Invoicer_Model</class>
+            </billysbilling>
+        </models>
+        <helpers>
+            <billysbilling>
+                <class>BillysBilling_Invoicer_Helper</class>
+            </billysbilling>
+        </helpers>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <billy>
+                                            <title>Billy - All</title>
+                                        </billy>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>
