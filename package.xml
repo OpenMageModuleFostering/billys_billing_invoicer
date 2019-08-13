@@ -1,25 +1,25 @@
 <?xml version="1.0"?>
 <package>
     <name>Billys_Billing_Invoicer</name>
-    <version>1.0.2</version>
+    <version>1.0.4</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL)</license>
     <channel>community</channel>
     <extends/>
     <summary>Billy's Billing Invoicer for Magento enables you to automatically submit invoices to Billy's Billing.</summary>
     <description>Billy's Billing Invoicer for Magento uses Billy's Billing's API to submit invoices to Billy's Billing automatically from orders created in the Magento shop. When orders are invoiced in Magento, they are automatically send to Billy's Billing with:&#xD;
- - General information about the order,&#xD;
- - Information about the customer, and&#xD;
- - Information about each product including shipping.&#xD;
+- General information about the order,&#xD;
+- Information about the customer, and&#xD;
+- Information about each product including shipping.&#xD;
 &#xD;
 This extension has been testing with the latest releases of version 1.5, 1.6 and 1.7.&#xD;
 &#xD;
 When this extension has been installed, you should go to System Configuration and access the Billy's Billing configuration page. From here you enter an API key (you can get this from organization settings in Billy's Billing) and save the configuration. When this is done, you will be able to change the dropdown boxes for shipping product, sales account, VAT model, and bank account. After they have been selected, you are ready to use the extension.</description>
-    <notes>Added support for sending payments along with invoices</notes>
+    <notes>Added option to offset due date</notes>
     <authors><author><name>Billy's Billing</name><user>billysbilling</user><email>michael@billysbilling.com</email></author></authors>
-    <date>2013-04-04</date>
-    <time>14:20:38</time>
-    <contents><target name="magecommunity"><dir name="BillysBilling"><dir name="Invoicer"><dir name="Helper"><file name="Data.php" hash="2e73f30c86e3cb150b91856d2efeebf4"/></dir><dir name="Model"><file name="Accounts.php" hash="a6861ea516d74d199d52be6e4a8eeb1c"/><file name="Observer.php" hash="1da721ce910f738efe3b257e719bfdfd"/><file name="Products.php" hash="86953a3321a191587b6da1ab57626c53"/><file name="VatModels.php" hash="e87151fe22f857340476d1d4ebaeb31c"/><dir name="billysbilling-php"><dir name="Billy"><file name="Client.php" hash="b947948ae0063e2a121751782f44c751"/><file name="Exception.php" hash="239b2ecc8821b6e55faef561d0f3089c"/><file name="Request.php" hash="60d6c8d0661ff97cfc828cc785e7c942"/></dir><file name="bootstrap.php" hash="95d828828c4fdf4d338407f4a270c397"/><file name=".DS_Store" hash="ac8ffff9277a5c8cfaa12d9a1e52ef3e"/></dir><file name=".DS_Store" hash="e78a22cf29e6201ef29c5f0981c55604"/></dir><dir name="etc"><file name="config.xml" hash="6e6e43879755df280715e65b68483775"/><file name="system.xml" hash="241330951b933b6283bd6869541db5dc"/></dir><file name=".DS_Store" hash="3fad5b10a22595598493fd98e0879784"/></dir><file name=".DS_Store" hash="099e78847f139a18fba02cd92135dd9a"/></dir></target><target name="mageetc"><dir name="modules"><file name="BillysBilling_Invoicer.xml" hash="4b11b30f403a358332323f04da27d1d4"/></dir></target></contents>
+    <date>2013-05-05</date>
+    <time>08:23:55</time>
+    <contents><target name="magecommunity"><dir name="BillysBilling"><dir name="Invoicer"><dir name="Helper"><file name="Data.php" hash="2e73f30c86e3cb150b91856d2efeebf4"/></dir><dir name="Model"><file name="Accounts.php" hash="a6861ea516d74d199d52be6e4a8eeb1c"/><file name="Observer.php" hash="07d3c13963b81bd248c3f73626a12d97"/><file name="Products.php" hash="86953a3321a191587b6da1ab57626c53"/><file name="VatModels.php" hash="e87151fe22f857340476d1d4ebaeb31c"/><file name="YesNo.php" hash="0948b76080b9829e733980dad3649fd9"/><dir name="billysbilling-php"><dir name="Billy"><file name="Client.php" hash="b947948ae0063e2a121751782f44c751"/><file name="Exception.php" hash="239b2ecc8821b6e55faef561d0f3089c"/><file name="Request.php" hash="60d6c8d0661ff97cfc828cc785e7c942"/></dir><file name="bootstrap.php" hash="95d828828c4fdf4d338407f4a270c397"/></dir></dir><dir name="etc"><file name="config.xml" hash="a0a96fdad03c6c10b018180fc7e1d38c"/><file name="system.xml" hash="7c7b2c0f151e904f7a82f32917aa8d09"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="BillysBilling_Invoicer.xml" hash="4b11b30f403a358332323f04da27d1d4"/></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.3.0</min><max>5.4.13</max></php></required></dependencies>
 </package>
