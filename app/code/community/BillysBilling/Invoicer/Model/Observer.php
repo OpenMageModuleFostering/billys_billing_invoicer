@@ -104,6 +104,7 @@ class BillysBilling_Invoicer_Model_Observer {
         $invoice = array(
             "type" => "invoice",
             "contactId" => $contactId,
+            "contactMessage" => "Order ID #" . $order->getId(),
             "entryDate" => $date,
             "dueDate" => $dueDate,
             "currencyId" => Mage::app()->getStore()->getCurrentCurrencyCode(),
@@ -154,7 +155,7 @@ class BillysBilling_Invoicer_Model_Observer {
         $responseArray = array();
         $id = null;
         try {
-            $address = $type . "?q=" . urlencode($data['name']);
+            $address = $type . "?externalId=" . urlencode($data['externalId']);
             if ($this->testMode) {
                 $response = $this->client->fakeGet(Mage::getBaseDir() . "/tests/output.log", $address);
             } else {
@@ -208,6 +209,7 @@ class BillysBilling_Invoicer_Model_Observer {
                 'state' => $data->getRegion(),
                 'phone' => $data->getTelephone(),
                 'fax' => $data->getFax(),
+                'externalId' => $data->getEmail(),
                 'persons' => array(
                     array(
                         'name' => $data->getName(),
@@ -222,8 +224,8 @@ class BillysBilling_Invoicer_Model_Observer {
                 "accountId" => $this->accountId,
                 "vatModelId" => $this->vatModelId,
                 "productType" => "product",
-                "productNo" => $data->product_id,
-                "suppliersProductNo" => $data->sku,
+                "productNo" => $data->sku,
+                "externalId" => $data->sku,
                 "prices" => array(
                     array(
                         "currencyId" => Mage::app()->getStore()->getCurrentCurrencyCode(),
